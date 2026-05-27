@@ -64,4 +64,5 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.retrofit.gson)
     implementation(libs.hilt.navigation.compose)
+    implementation(libs.androidx.compose.navigation)
 }

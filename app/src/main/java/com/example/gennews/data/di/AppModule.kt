@@ -66,4 +66,6 @@ object AppModule {
         return NewsDataUseCase(newsRepository)
     }
 
+
+
 }
