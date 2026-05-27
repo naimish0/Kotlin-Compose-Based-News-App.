@@ -6,6 +6,7 @@ import com.example.gennews.data.di.remote.NewsDataSourceImpl
 import com.example.gennews.data.di.remote.repository.NewsRepositoryImpl
 import com.example.gennews.domain.repository.NewsRepository
 import com.example.gennews.domain.usecase.NewsDataUseCase
+import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
@@ -14,7 +15,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
-
+@Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
