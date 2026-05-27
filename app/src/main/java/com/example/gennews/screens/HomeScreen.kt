@@ -2,6 +2,7 @@ package com.example.gennews.screens
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.runtime.Composable
@@ -25,7 +26,7 @@ fun HomeScreen(newsViewModel: NewsViewModel) {
         val currentCategory = categories[pagerState.currentPage]
         newsViewModel.getNewsData(NewsIntent.getNewsIntent(currentCategory))
     }
-    Column(modifier = Modifier.fillMaxSize()) {
+    Column(modifier = Modifier.fillMaxSize().statusBarsPadding()) {
         CategoryTab(
             selectedIndex = pagerState.currentPage,
             categories = categories,

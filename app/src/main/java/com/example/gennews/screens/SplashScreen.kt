@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -37,7 +38,7 @@ fun SplashScreen(newsViewModel: NewsViewModel, navController: NavController) {
     }
 
     Column(
-        modifier = Modifier
+        modifier = Modifier.statusBarsPadding()
             .fillMaxSize()
             .background(if (isError) Color.White else Color.Red),
         verticalArrangement = Arrangement.Center,
