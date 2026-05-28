@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.gennews.presentation.viewmodel.NewsViewModel
+import com.example.gennews.screens.ContentDetailsScreen
 import com.example.gennews.screens.HomeScreen
 import com.example.gennews.screens.SplashScreen
 
@@ -24,7 +25,11 @@ object NavHostObject {
             }
             composable("home") {
                 val newsViewModel: NewsViewModel = hiltViewModel()
-                HomeScreen(newsViewModel)
+                HomeScreen(newsViewModel, navController)
+            }
+            composable("contentDetails") {
+                val newsViewModel: NewsViewModel = hiltViewModel()
+                ContentDetailsScreen(newsViewModel)
             }
         }
     }

@@ -11,13 +11,14 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavController
 import com.example.gennews.domain.newscatagory.NewsCategory
 import com.example.gennews.presentation.intent.NewsIntent
 import com.example.gennews.presentation.viewmodel.NewsViewModel
 import kotlinx.coroutines.launch
 
 @Composable
-fun HomeScreen(newsViewModel: NewsViewModel) {
+fun HomeScreen(newsViewModel: NewsViewModel, navController: NavController) {
     val newsUiState by newsViewModel.newsUiState.collectAsState()
     val coroutineScope = rememberCoroutineScope()
     val categories = NewsCategory.entries
@@ -26,7 +27,9 @@ fun HomeScreen(newsViewModel: NewsViewModel) {
         val currentCategory = categories[pagerState.currentPage]
         newsViewModel.getNewsData(NewsIntent.getNewsIntent(currentCategory))
     }
-    Column(modifier = Modifier.fillMaxSize().statusBarsPadding()) {
+    Column(modifier = Modifier
+        .fillMaxSize()
+        .statusBarsPadding()) {
         CategoryTab(
             selectedIndex = pagerState.currentPage,
             categories = categories,
@@ -49,9 +52,18 @@ fun HomeScreen(newsViewModel: NewsViewModel) {
                 }
 
                 newsData != null -> {
-                    NewsListScreen(newsData)
+                    NewsListScreen(newsData, onNewsClick = { article ->
+                        newsViewModel.onArticleSelected(article)
+                        moveToContentDetailsScreen(navController)
+                    })
                 }
             }
         }
     }
+}
+
+
+
+fun moveToContentDetailsScreen(navController: NavController) {
+    navController.navigate("contentDetails")
 }
