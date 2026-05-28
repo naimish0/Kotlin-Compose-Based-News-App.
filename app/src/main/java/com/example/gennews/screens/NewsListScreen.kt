@@ -19,16 +19,20 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import com.example.gennews.data.di.module.Article
 import com.example.gennews.data.di.module.CategoryNewData
 
 @Composable
-fun NewsListScreen(newsData: CategoryNewData) {
+fun NewsListScreen(newsData: CategoryNewData, onNewsClick: (Article) -> Unit) {
     LazyColumn(modifier = Modifier.fillMaxSize()) {
         items(newsData.articles.orEmpty()) { article ->
             Card(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(12.dp)
+                    .padding(12.dp),
+                onClick = {
+                    onNewsClick(article)
+                }
             ) {
                 Row(modifier = Modifier.padding(12.dp),
                     verticalAlignment = Alignment.CenterVertically) {

@@ -3,6 +3,7 @@ package com.example.gennews.presentation.viewmodel
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.gennews.data.di.module.Article
 import com.example.gennews.domain.newscatagory.NewsCategory
 import com.example.gennews.domain.usecase.NewsDataUseCase
 import com.example.gennews.presentation.action.NewsAction
@@ -70,6 +71,12 @@ class NewsViewModel @Inject constructor(private val newsDataUseCase: NewsDataUse
                     error = newsResult.message
                 )
             }
+        }
+    }
+
+    fun onArticleSelected(article: Article) {
+        _newsUiState.update {
+            it.copy(selectedArticle = article)
         }
     }
 
