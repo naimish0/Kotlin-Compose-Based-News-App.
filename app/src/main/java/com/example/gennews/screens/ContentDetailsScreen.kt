@@ -28,7 +28,7 @@ fun ContentDetailsScreen(newsViewModel: NewsViewModel) {
     Column(modifier = Modifier.padding(30.dp)) {
         newsUiState.selectedArticle?.content?.let { Text(it) }
         Spacer(modifier = Modifier.height(20.dp))
-       AsyncImage(model = newsUiState.selectedArticle.urlToImage, contentDescription = "News Image", modifier = Modifier.size(90.dp).clip(
+       AsyncImage(model = newsUiState.selectedArticle?.urlToImage, contentDescription = "News Image", modifier = Modifier.size(90.dp).clip(
             RoundedCornerShape(12.dp)), contentScale = ContentScale.Crop)
     }
 }
