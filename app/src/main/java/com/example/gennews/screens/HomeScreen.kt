@@ -1,5 +1,6 @@
 package com.example.gennews.screens
 
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.statusBarsPadding
@@ -42,6 +43,7 @@ fun HomeScreen(newsViewModel: NewsViewModel, navController: NavController) {
         HorizontalPager(state = pagerState, modifier = Modifier.fillMaxSize()) { page ->
             val category = categories[page]
             val newsData = newsUiState.categoryNewsMap[category]
+            Log.d("HomeScreen: ", "$newsData")
             when {
                 newsUiState.isLoading && newsData == null -> {
                     LoadingScreen()
