@@ -54,16 +54,10 @@ fun HomeScreen(newsViewModel: NewsViewModel, navController: NavController) {
                 newsData != null -> {
                     NewsListScreen(newsData, onNewsClick = { article ->
                         newsViewModel.onArticleSelected(article)
-                        moveToContentDetailsScreen(navController)
+                        navController.navigate("contentDetails")
                     })
                 }
             }
         }
     }
-}
-
-
-
-fun moveToContentDetailsScreen(navController: NavController) {
-    navController.navigate("contentDetails")
 }
