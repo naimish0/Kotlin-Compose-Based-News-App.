@@ -1,10 +1,14 @@
 name: Test Workflow
-run-name: Deploy to ${{ inputs.deploy_target }} by @${{ github.actor }}
 on: push
 
 jobs:
-  tests:
+  test:
     runs-on: ubuntu-latest
 
     steps:
-      - run: echo "Hello CI/CD"
+      - uses: actions/checkout@v4
+        name: Print Commit Info
+      - run: |
+          echo "Workflow Triggered"
+          echo "Commit: ${{ github.sha }}"
+          echo "Branch: ${{ github.ref_name }}"
