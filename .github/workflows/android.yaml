@@ -3,7 +3,7 @@ name: Android CI
 on:
   push:
     branches:
-      - T0-Base
+      - feature/T0-Base
 
 jobs:
   build:
