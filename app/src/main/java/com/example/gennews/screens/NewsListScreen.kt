@@ -37,7 +37,7 @@ fun NewsListScreen(newsData: CategoryNewData, onNewsClick: (Article) -> Unit) {
                 Row(modifier = Modifier.padding(12.dp),
                     verticalAlignment = Alignment.CenterVertically) {
                     Text(
-                        text = article.title, modifier = Modifier
+                        text = article.title ?: "Yo Wassup Man, Come Later Homie", modifier = Modifier
                             .weight(1f)
                     )
                     Spacer(modifier = Modifier.width(12.dp))

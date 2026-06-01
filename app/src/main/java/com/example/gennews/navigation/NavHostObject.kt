@@ -1,6 +1,7 @@
 package com.example.gennews.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -15,20 +16,18 @@ object NavHostObject {
     @Composable
     fun AppNavigation() {
         val navController = rememberNavController()
+        val newsViewModel: NewsViewModel = hiltViewModel()
         NavHost(navController = navController, startDestination = "splash") {
             composable("splash") {
-                val newsViewModel: NewsViewModel = hiltViewModel()
                 SplashScreen(
                     newsViewModel = newsViewModel,
                     navController = navController
                 )
             }
             composable("home") {
-                val newsViewModel: NewsViewModel = hiltViewModel()
                 HomeScreen(newsViewModel, navController)
             }
             composable("contentDetails") {
-                val newsViewModel: NewsViewModel = hiltViewModel()
                 ContentDetailsScreen(newsViewModel)
             }
         }

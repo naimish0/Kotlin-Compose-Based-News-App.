@@ -1,5 +1,6 @@
 package com.example.gennews.screens
 
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.statusBarsPadding
@@ -54,7 +55,8 @@ fun HomeScreen(newsViewModel: NewsViewModel, navController: NavController) {
                 newsData != null -> {
                     NewsListScreen(newsData, onNewsClick = { article ->
                         newsViewModel.onArticleSelected(article)
-                        moveToContentDetailsScreen(navController)
+                        Log.d("Naimish", "VM = ${newsViewModel.hashCode()}")
+                        navController.navigate("contentDetails")
                     })
                 }
             }
@@ -63,7 +65,7 @@ fun HomeScreen(newsViewModel: NewsViewModel, navController: NavController) {
 }
 
 
-
-fun moveToContentDetailsScreen(navController: NavController) {
-    navController.navigate("contentDetails")
-}
+//
+//fun moveToContentDetailsScreen(navController: NavController) {
+//    navController.navigate("contentDetails")
+//}
