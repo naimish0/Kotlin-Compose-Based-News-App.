@@ -76,7 +76,6 @@ class NewsViewModel @Inject constructor(private val newsDataUseCase: NewsDataUse
 
     fun onArticleSelected(article: Article) {
         _newsUiState.update {
-            Log.d("Naimish: onArticleSelected:", "$article")
             it.copy(selectedArticle = article)
         }
     }

@@ -55,7 +55,6 @@ fun HomeScreen(newsViewModel: NewsViewModel, navController: NavController) {
                 newsData != null -> {
                     NewsListScreen(newsData, onNewsClick = { article ->
                         newsViewModel.onArticleSelected(article)
-                        Log.d("Naimish", "VM = ${newsViewModel.hashCode()}")
                         navController.navigate("contentDetails")
                     })
                 }

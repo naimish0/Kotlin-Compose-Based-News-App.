@@ -45,7 +45,6 @@ fun ContentDetailsScreen(newsViewModel: NewsViewModel) {
     LazyColumn(
         modifier = Modifier.fillMaxSize()
     ) {
-
         item {
             Box(
                 modifier = Modifier
