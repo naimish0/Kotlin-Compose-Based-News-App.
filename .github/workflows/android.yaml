@@ -1,10 +1,23 @@
-name: Test Workflow
+name: Android CI
 
-on: push
+on:
+  push:
+    branches:
+      - T0-Base
 
 jobs:
-  tests:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - run: echo "Hello CI/CD"
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - run: chmod +x gradlew
+
+      - name: Build App
+        run: ./gradlew assembleDebug
