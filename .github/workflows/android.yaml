@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - feature/T0-Base
+    tags:
+      - '*v*'
 
 jobs:
   build:
@@ -19,11 +21,15 @@ jobs:
 
       - run: chmod +x gradlew
 
+      - name: Print Tag
+        run: echo "Tag = ${{github.ref_name}}"
+
       - name: Build App
         run: ./gradlew assembleDebug
 
       - name: Upload Apk
         uses: actions/upload-artifact@v4
         with:
-          name: debug-apk
+          name: news-${{github.ref_name}}
           path: app/build/outputs/apk/debug/*.apk
+
