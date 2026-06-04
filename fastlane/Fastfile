@@ -9,7 +9,7 @@ platform :android do
     tag = ENV["GITHUB_REF_NAME"] || "local"
 
     sh <<~SHELL
-      mv app/build/outputs/apk/debug/app-debug.apk \
+      mv app/build/outputs/apk/debug/ \
          app/build/outputs/apk/debug/news-#{tag}.apk
     SHELL
 
