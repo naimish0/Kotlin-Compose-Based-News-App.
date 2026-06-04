@@ -28,9 +28,6 @@ jobs:
       - name: Print Tag
         run: echo "Tag = ${{ github.ref_name }}"
 
-      - name: Install Gems
-        run: bundle install
-
       - name: Build and Distribute
         env:
           FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}

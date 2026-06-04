@@ -6,6 +6,13 @@ platform :android do
       task: "assembleDebug"
     )
 
+    tag = ENV["GITHUB_REF_NAME"] || "local"
+
+    sh <<~SHELL
+      mv app/build/outputs/apk/debug/app-debug.apk \
+         app/build/outputs/apk/debug/news-#{tag}.apk
+    SHELL
+
     firebase_app_distribution(
       app: ENV["FIREBASE_APP_ID"],
       testers: "naimishgupta983842377@gmail.com",
