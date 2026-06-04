@@ -1,16 +1,15 @@
 default_platform(:android)
 
 platform :android do
-    desc "Build Debug Apk"
-    lane :build_debug do
-        gradle(
-        task: "assembleDebug"
-        )
+  lane :beta do
+    gradle(
+      task: "assembleDebug"
+    )
 
     firebase_app_distribution(
       app: ENV["FIREBASE_APP_ID"],
       testers: "naimishgupta983842377@gmail.com",
       apk_path: "app/build/outputs/apk/debug/app-debug.apk"
-     )
-    end
+    )
+  end
 end
