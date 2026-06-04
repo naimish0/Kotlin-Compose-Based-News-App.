@@ -1,3 +1,5 @@
+import shadow.bundletool.com.android.ddmlib.Log
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
@@ -13,15 +15,21 @@ android {
             minorApiLevel = 1
         }
     }
+    val tag = System.getenv("GITHUB_REF_NAME") ?: ""
+
+    val match = Regex("""all-(\d+\.\d+\.\d+)v(\d+)""").find(tag)
 
     defaultConfig {
         applicationId = "com.example.gennews"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        versionName = match?.groupValues?.get(1) ?: "1.0"
+        versionCode = match?.groupValues?.get(2)?.toInt() ?: 1
+        Log.d("versionName: versionCode", "$versionName $versionCode")
     }
 
     buildTypes {
