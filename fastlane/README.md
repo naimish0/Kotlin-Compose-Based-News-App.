@@ -15,13 +15,13 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 ## Android
 
-### android build_debug
+### android beta
 
 ```sh
-[bundle exec] fastlane android build_debug
+[bundle exec] fastlane android beta
 ```
 
-Build Debug Apk
+
 
 ----
 
