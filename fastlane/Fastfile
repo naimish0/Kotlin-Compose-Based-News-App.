@@ -5,26 +5,19 @@ platform :android do
     gradle(
       task: "assembleDebug"
     )
+    apk = lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH]
 
-    apk_path = Dir["app/build/outputs/apk/debug/*.apk"].first
+      UI.user_error!("APK not found!") if apk.nil?
 
-    UI.user_error!("APK not found!") unless apk_path
+      tag = ENV["GITHUB_REF_NAME"] || "local"
+      new_apk = apk.sub("app-debug.apk", "news-#{tag}.apk")
 
-    tag = ENV["GITHUB_REF_NAME"] || "local"
-    new_apk_path = "app/build/outputs/apk/debug/news-#{tag}.apk"
+      sh("mv '#{apk}' '#{new_apk}'")
 
-    sh("mv #{apk_path} #{new_apk_path}")
-
-    firebase_app_distribution(
-      app: ENV["FIREBASE_APP_ID"],
-      testers: "naimishgupta983842377@gmail.com",
-      apk_path: new_apk_path
-    )
-
-    firebase_app_distribution(
-      app: ENV["FIREBASE_APP_ID"],
-      testers: "naimishgupta983842377@gmail.com",
-      apk_path: new_apk_path
-    )
+      firebase_app_distribution(
+        app: ENV["FIREBASE_APP_ID"],
+        testers: "naimishgupta983842377@gmail.com",
+        apk_path: new_apk
+      )
   end
 end
