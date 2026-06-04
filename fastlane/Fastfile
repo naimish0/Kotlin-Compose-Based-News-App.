@@ -6,17 +6,25 @@ platform :android do
       task: "assembleDebug"
     )
 
-    tag = ENV["GITHUB_REF_NAME"] || "local"
+    apk_path = Dir["app/build/outputs/apk/debug/*.apk"].first
 
-    sh <<~SHELL
-      mv app/build/outputs/apk/debug/ \
-         app/build/outputs/apk/debug/news-#{tag}.apk
-    SHELL
+    UI.user_error!("APK not found!") unless apk_path
+
+    tag = ENV["GITHUB_REF_NAME"] || "local"
+    new_apk_path = "app/build/outputs/apk/debug/news-#{tag}.apk"
+
+    sh("mv #{apk_path} #{new_apk_path}")
 
     firebase_app_distribution(
       app: ENV["FIREBASE_APP_ID"],
       testers: "naimishgupta983842377@gmail.com",
-      apk_path: "app/build/outputs/apk/debug/news-#{tag}.apk"
+      apk_path: new_apk_path
+    )
+
+    firebase_app_distribution(
+      app: ENV["FIREBASE_APP_ID"],
+      testers: "naimishgupta983842377@gmail.com",
+      apk_path: new_apk_path
     )
   end
 end
