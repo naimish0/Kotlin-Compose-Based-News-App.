@@ -16,7 +16,7 @@ platform :android do
     firebase_app_distribution(
       app: ENV["FIREBASE_APP_ID"],
       testers: "naimishgupta983842377@gmail.com",
-      apk_path: "app/build/outputs/apk/debug/app-debug.apk"
+      apk_path: "app/build/outputs/apk/debug/news-#{tag}.apk"
     )
   end
 end
