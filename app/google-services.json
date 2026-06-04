@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "401420059660",
+    "project_id": "compose-base-news-app",
+    "storage_bucket": "compose-base-news-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:401420059660:android:ddd1b16d08c7aee1979a29",
+        "android_client_info": {
+          "package_name": "com.example.gennews"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBg1m_DjzrZa_xaCwbaLLOLOSk5zQfRpRg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
